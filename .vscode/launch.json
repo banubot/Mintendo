@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Mintendo",
+            "request": "launch",
+            "mainClass": "Mintendo",
+            "projectName": "Mintendo"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - RoombaAsteroids",
+            "request": "launch",
+            "mainClass": "RoombaAsteroids",
+            "projectName": "Mintendo"
+        }
+    ]
+}
