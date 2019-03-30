@@ -23,31 +23,17 @@ public class Mintendo extends Application {
 		launch(args);
 	}
 
+	
 	public void start(Stage stage) {
-		Image roomba = new Image("file:roomba.png");
+		GameHandler handler = new GameHandler();
+		Game game = new Game();
+		GameState gameState;
 
-		stage.setTitle("Mintendo");
+		stage.setTitle("Dukkha");
 		BorderPane borderPane = new BorderPane();
 	  	stage.setScene(new Scene(borderPane, 900, 900));
-		Circle circ = new Circle(50);
-	    circ.setFill(new ImagePattern(roomba, 0, 0, 1, 1, true));
-		circ.setLayoutX(200);
-		circ.setLayoutY(200);
-		borderPane.getChildren().add(circ);
-		boolean isRotating = false;
-	
-		borderPane.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {	
-			public void handle (MouseEvent event) {
-				if (event.getButton() == MouseButton.PRIMARY) {
-					System.out.println("RIGHT");
-					circ.setRotate(circ.getRotate() + 20);
-				} else {
-					System.out.println("LEFT");
-					circ.setRotate(circ.getRotate() - 20);
-				}
-				
-			}	
-		});
+		game.roomba(stage, borderPane);
+		
 		stage.show();
 	}
 }
