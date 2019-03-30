@@ -35,8 +35,6 @@ public class RoombaAsteroids extends Application {
         Circle circ = new Circle(50);
         Image roomba = new Image("file:roomba.png");
         circ.setFill(new ImagePattern(roomba, 0, 0, 1, 1, true));
-        // circ.setLayoutX(150);
-        // circ.setLayoutY(150);
 
         player = new Player(circ);
         player.setVelocity(new Point2D(1, 0));
