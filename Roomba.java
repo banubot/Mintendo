@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
@@ -38,9 +39,17 @@ public class Roomba implements GameState {
 		RoombaObject player = new RoombaObject(50, 0, 0, 1, 1, true, 200, 200, new Point2D(0, -1));
 		borderPane.getChildren().add(player);
 		
-		Rectangle rectangle = new Rectangle(75, 50, 300, 25);
-		rectangle.setFill(Paint.valueOf("#000000"));
-		borderPane.getChildren().add(rectangle);
+		Rectangle workMeter = new Rectangle(75, 50, 300, 25);
+		workMeter.setFill(Color.TRANSPARENT);
+		workMeter.setStrokeWidth(4);
+		workMeter.setStroke(Color.BLACK);
+		borderPane.getChildren().add(workMeter);
+		
+		Rectangle bareMinimumThreshold = new Rectangle(150, 50, 50, 25);
+		bareMinimumThreshold.setFill(Color.TRANSPARENT);
+		bareMinimumThreshold.setStrokeWidth(4);
+		bareMinimumThreshold.setStroke(Color.BLACK);
+		borderPane.getChildren().add(bareMinimumThreshold);
 		
 		
 		LinkedList<Trail> trails = new LinkedList<Trail>();
@@ -50,8 +59,6 @@ public class Roomba implements GameState {
             	if(!rotating)
             	{
             		player.update();
-            		
-            		//TODO: Add a trail opacity
             		
             		Trail trail = new Trail(player.getLoc().getX(), player.getLoc().getY()+200, player.getRadius()-20, player);
             		borderPane.getChildren().add(0, trail);
@@ -96,6 +103,9 @@ public class Roomba implements GameState {
 	            }
 			}
 		});
+		
+		
+		//TODO: Remove everything and event handlers before continuing to next level
 	}
 	
 }
