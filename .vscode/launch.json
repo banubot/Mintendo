@@ -4,6 +4,12 @@
             "type": "java",
             "name": "CodeLens (Launch) - Mintendo",
             "request": "launch",
+            "mainClass": "Mintendo"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Mintendo",
+            "request": "launch",
             "mainClass": "Mintendo",
             "projectName": "Mintendo"
         },
