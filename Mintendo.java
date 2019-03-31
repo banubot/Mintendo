@@ -1,6 +1,7 @@
 import javafx.event.ActionEvent;
 import javafx.application.Application;
 import javafx.stage.*;
+import sun.audio.*;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
@@ -25,6 +26,19 @@ public class Mintendo extends Application {
 		Game game = new Game();
 		GameState gameState;
 
+		ContinuousAudioDataStream loop = null;
+		AudioPlayer MGP = music();
+		MGP.start(loop);
+
+		BorderPane layout1 = mainMenuLayout(game, stage);
+		Scene mainMenu = new Scene(layout1, 900, 900);
+
+		stage.setScene(mainMenu);
+		stage.setTitle("Dukkha");
+		stage.show();
+	}
+
+	private BorderPane mainMenuLayout(Game game, Stage stage) {
 		BorderPane borderPane = new BorderPane();
 		// stage.setScene(new Scene(borderPane, 900, 900));
 		game.roomba(stage, borderPane);
@@ -48,10 +62,28 @@ public class Mintendo extends Application {
 		BorderPane layout1 = new BorderPane();
 		layout1.setBackground(background);
 		layout1.setCenter(mainTab);
-		Scene mainMenu = new Scene(layout1, 900, 900);
+		return layout1;
+	}
 
-		stage.setScene(mainMenu);
-		stage.setTitle("Dukkha");
-		stage.show();
+	private AudioPlayer music() {
+		AudioPlayer MGP = AudioPlayer.player;
+		AudioStream BGM;
+		AudioData MD;
+
+		try {
+
+			// BGM = new AudioStream(new FileInputStream("testAudio.wav"));
+			BGM = new AudioStream(new FileInputStream("mintendoMusic.wav"));
+			// MD = BGM.getData();
+			AudioPlayer.player.start(BGM);
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return MGP;
 	}
 }
