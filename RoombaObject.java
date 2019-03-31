@@ -7,7 +7,9 @@ public class RoombaObject extends Circle{
 
 	Point2D velocity;
 	Point2D location;
-	int size, centeredx, centeredy, width, height;
+	int size, width, height;
+	double centeredy;
+	double centeredx;
 	boolean proportional;
 	
 	public RoombaObject(){
@@ -64,6 +66,8 @@ public class RoombaObject extends Circle{
         this.setTranslateY(this.getTranslateY() + velocity.getY());
         
         this.setLoc(new Point2D(this.getTranslateX(), this.getTranslateY()));
+        this.centeredx = location.getX();
+        this.centeredy = location.getY();
     }
 	
 	public Point2D getVelocity(){
